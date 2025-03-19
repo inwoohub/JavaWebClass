@@ -1,0 +1,30 @@
+.Header_header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 9999; /* 다른 요소보다 위에 나타나도록 높은 값 */
+    background-color: #fff; /* 헤더가 잘 보이도록 배경색 지정 */
+  }
+  
+
+.video_button{
+  position: absolute;
+  top: 65vh;
+  left: 43vw;
+  padding: 20px 28px;
+  z-Index: 1000;
+  cursor: pointer;
+  font-size: 18px;
+  border: 2px solid white;  /* 두께 2px, 검은색 실선 테두리 */
+  background-color: rgb(206, 169, 76);
+}
+
+.LOLlogo2{
+  position:absolute; 
+  top: 20px; 
+  left: 20px; 
+  cursor: pointer;
+  height: 23vh;
+  width: 24vw;
+}

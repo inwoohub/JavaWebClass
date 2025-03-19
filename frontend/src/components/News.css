@@ -1,0 +1,35 @@
+.News_Page{
+    background-color: white;
+    margin-left: 3vw;
+}
+
+.News_structure{
+    display: flex;
+    gap:1.3vw;
+}
+
+.News_testimage{
+    width: 30vw;
+    height: 35vh;
+}
+
+.News_testimage2{
+    width: 30vw;
+    height: 35vh;
+}
+
+.News_testimage3{
+    width: 30vw;
+    height: 35vh;
+}
+
+.News_item{
+    width:30vw;
+    height: 50vh;
+}
+
+.News_textitem{
+    font-size: 22px;
+    font-weight: bold;
+}
+
