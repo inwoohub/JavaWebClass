@@ -1,0 +1,133 @@
+[33mcommit 0887ca0c9318ede86f276d20ca147cd8bd13f7ba[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: 우 <dlsdndls@naver.com>
+Date:   Wed Mar 19 14:12:21 2025 +0900
+
+    javawebclass폴더 커밋
+
+ index.html | 20 [32m++++++++++++++++++++[m
+ 1 file changed, 20 insertions(+)
+
+[33mcommit 2470f06fa6e749b4eb31be99ce660efb038622b6[m
+Author: 우 <dlsdndls@naver.com>
+Date:   Wed Mar 19 14:01:33 2025 +0900
+
+    javawebclass폴더는 왜 커밋이 안될까
+
+ index.html | 32 [32m++++++++++++++++++[m[31m--------------[m
+ 1 file changed, 18 insertions(+), 14 deletions(-)
+
+[33mcommit 052ca05546c16ab3f4384be87447a3e541f734d6[m
+Author: 우 <dlsdndls@naver.com>
+Date:   Wed Mar 19 13:54:37 2025 +0900
+
+    3월19일 쉬는시간 수업 커밋 테스트
+
+ index.html | 12 [32m++++++++++++[m
+ 1 file changed, 12 insertions(+)
+
+[33mcommit cca4b93fab6cce5dad3eafc56d821972ab67b1a2[m
+Author: 우 <dlsdndls@naver.com>
+Date:   Wed Mar 19 13:46:52 2025 +0900
+
+    애니메이션 제거버전 재 업로드
+
+ .vscode/settings.json                              |     3 [32m+[m
+ image/logo_steam.svg                               |    38 [32m+[m
+ index.html                                         |    11 [32m+[m
+ node_modules/.package-lock.json                    |   104 [31m-[m
+ node_modules/@types/cookie/LICENSE                 |    21 [31m-[m
+ node_modules/@types/cookie/README.md               |    15 [31m-[m
+ node_modules/@types/cookie/index.d.ts              |   154 [31m-[m
+ node_modules/@types/cookie/package.json            |    30 [31m-[m
+ node_modules/cookie/LICENSE                        |    24 [31m-[m
+ node_modules/cookie/README.md                      |   248 [31m-[m
+ node_modules/cookie/dist/index.d.ts                |   114 [31m-[m
+ node_modules/cookie/dist/index.js                  |   239 [31m-[m
+ node_modules/cookie/dist/index.js.map              |     1 [31m-[m
+ node_modules/cookie/package.json                   |    42 [31m-[m
+ node_modules/react-dom/LICENSE                     |    21 [31m-[m
+ node_modules/react-dom/README.md                   |    60 [31m-[m
+ .../react-dom/cjs/react-dom-client.development.js  | 24716 [31m------------------[m
+ .../react-dom/cjs/react-dom-client.production.js   | 15181 [31m-----------[m
+ .../cjs/react-dom-profiling.development.js         | 25103 [31m-------------------[m
+ .../react-dom/cjs/react-dom-profiling.profiling.js | 16010 [31m------------[m
+ .../react-dom-server-legacy.browser.development.js |  8574 [31m-------[m
+ .../react-dom-server-legacy.browser.production.js  |  5626 [31m-----[m
+ .../react-dom-server-legacy.node.development.js    |  8574 [31m-------[m
+ .../cjs/react-dom-server-legacy.node.production.js |  5704 [31m-----[m
+ .../cjs/react-dom-server.browser.development.js    |  8956 [31m-------[m
+ .../cjs/react-dom-server.browser.production.js     |  6111 [31m-----[m
+ .../cjs/react-dom-server.bun.development.js        |  8292 [31m------[m
+ .../cjs/react-dom-server.bun.production.js         |  5694 [31m-----[m
+ .../cjs/react-dom-server.edge.development.js       |  8975 [31m-------[m
+ .../cjs/react-dom-server.edge.production.js        |  6202 [31m-----[m
+ .../cjs/react-dom-server.node.development.js       |  8849 [31m-------[m
+ .../cjs/react-dom-server.node.production.js        |  6097 [31m-----[m
+ .../cjs/react-dom-test-utils.development.js        |    24 [31m-[m
+ .../cjs/react-dom-test-utils.production.js         |    21 [31m-[m
+ .../react-dom/cjs/react-dom.development.js         |   424 [31m-[m
+ node_modules/react-dom/cjs/react-dom.production.js |   210 [31m-[m
+ .../cjs/react-dom.react-server.development.js      |   340 [31m-[m
+ .../cjs/react-dom.react-server.production.js       |   152 [31m-[m
+ node_modules/react-dom/client.js                   |    38 [31m-[m
+ node_modules/react-dom/client.react-server.js      |     5 [31m-[m
+ node_modules/react-dom/index.js                    |    38 [31m-[m
+ node_modules/react-dom/package.json                |   117 [31m-[m
+ node_modules/react-dom/profiling.js                |    38 [31m-[m
+ node_modules/react-dom/profiling.react-server.js   |     5 [31m-[m
+ node_modules/react-dom/react-dom.react-server.js   |     7 [31m-[m
+ node_modules/react-dom/server.browser.js           |    18 [31m-[m
+ node_modules/react-dom/server.bun.js               |    19 [31m-[m
+ node_modules/react-dom/server.edge.js              |    19 [31m-[m
+ node_modules/react-dom/server.js                   |     3 [31m-[m
+ node_modules/react-dom/server.node.js              |    18 [31m-[m
+ node_modules/react-dom/server.react-server.js      |     5 [31m-[m
+ node_modules/react-dom/static.browser.js           |    12 [31m-[m
+ node_modules/react-dom/static.edge.js              |    12 [31m-[m
+ node_modules/react-dom/static.js                   |     3 [31m-[m
+ node_modules/react-dom/static.node.js              |    12 [31m-[m
+ node_modules/react-dom/static.react-server.js      |     5 [31m-[m
+ node_modules/react-dom/test-utils.js               |     7 [31m-[m
+ node_modules/react-router-dom/LICENSE.md           |    23 [31m-[m
+ node_modules/react-router-dom/README.md            |     6 [31m-[m
+ node_modules/react-router-dom/dist/index.d.mts     |     2 [31m-[m
+ node_modules/react-router-dom/dist/index.d.ts      |     2 [31m-[m
+ node_modules/react-router-dom/dist/index.js        |    45 [31m-[m
+ node_modules/react-router-dom/dist/index.mjs       |    18 [31m-[m
+ node_modules/react-router-dom/package.json         |    82 [31m-[m
+ node_modules/react-router/CHANGELOG.md             |  1463 [31m--[m
+ node_modules/react-router/LICENSE.md               |    23 [31m-[m
+ node_modules/react-router/README.md                |     7 [31m-[m
+ .../dist/development/chunk-K6CSEXPM.mjs            | 10261 [31m--------[m
+ .../react-router/dist/development/dom-export.d.mts |    23 [31m-[m
+ .../react-router/dist/development/dom-export.d.ts  |    23 [31m-[m
+ .../react-router/dist/development/dom-export.js    |  5900 [31m-----[m
+ .../react-router/dist/development/dom-export.mjs   |   216 [31m-[m
+ .../dist/development/fog-of-war-CvttGpNz.d.ts      |  1686 [31m--[m
+ .../dist/development/fog-of-war-Da8gpnoZ.d.mts     |  1686 [31m--[m
+ .../dist/development/future-ldDp5FKH.d.mts         |    21 [31m-[m
+ .../dist/development/future-ldDp5FKH.d.ts          |    21 [31m-[m
+ .../react-router/dist/development/index.d.mts      |   841 [31m-[m
+ .../react-router/dist/development/index.d.ts       |   841 [31m-[m
+ .../react-router/dist/development/index.js         | 10409 [31m--------[m
+ .../react-router/dist/development/index.mjs        |   242 [31m-[m
+ .../dist/development/lib/types/route-module.d.mts  |   209 [31m-[m
+ .../dist/development/lib/types/route-module.d.ts   |   209 [31m-[m
+ .../dist/development/lib/types/route-module.js     |    28 [31m-[m
+ .../dist/development/lib/types/route-module.mjs    |    10 [31m-[m
+ .../dist/development/route-data-H2S3hwhf.d.mts     |  1705 [31m--[m
+ .../dist/development/route-data-H2S3hwhf.d.ts      |  1705 [31m--[m
+ .../dist/production/chunk-RFJZTPXA.mjs             | 10261 [31m--------[m
+ .../react-router/dist/production/dom-export.d.mts  |    23 [31m-[m
+ .../react-router/dist/production/dom-export.d.ts   |    23 [31m-[m
+ .../react-router/dist/production/dom-export.js     |  5900 [31m-----[m
+ .../react-router/dist/production/dom-export.mjs    |   216 [31m-[m
+ .../dist/production/fog-of-war-CvttGpNz.d.ts       |  1686 [31m--[m
+ .../dist/production/fog-of-war-Da8gpnoZ.d.mts      |  1686 [31m--[m
+ .../dist/production/future-ldDp5FKH.d.mts          |    21 [31m-[m
+ .../dist/production/future-ldDp5FKH.d.ts           |    21 [31m-[m
+ .../react-router/dist/production/index.d.mts       |   841 [31m-[m
+ .../react-router/dist/production/index.d.ts        |   841 [31m-[m
+ node_modules/react-router/dist/production/index.js | 10409 [31m--------[m
+ .../react-router/dist/production/index.mjs         |   242 [31m-[m
+ .../dist/production/lib/types/route-module.
