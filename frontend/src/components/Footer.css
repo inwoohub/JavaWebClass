@@ -1,0 +1,97 @@
+.Footer_page{
+    background-color: black;
+    height: 70vh;
+    margin-top: 10vh;
+}
+
+.Footer_logo_item{
+    justify-content: center;
+    display: flex;
+    align-items: center; /* 모든 아이템이 수직 중앙 정렬 */
+}
+
+.Footer_instargram{
+    width: 20px;
+    height: 15px;
+    margin-left: 0.1vw;
+    margin-top: 0.2vw;
+}
+
+.Footer_youtube{
+    width: 20px;
+    height: 15px;
+    margin-left: 0.1vw;
+    margin-top: 0.2vw;
+}
+
+.Footer_facebook{
+    width: 25px;
+    height: 25p x;
+    margin-left: 0vw;
+    margin-top: 0.2vw;
+}
+
+.Footer_twitter{
+    width: 20px;
+    height: 20px;
+    margin-left: 0.1vw;
+    margin-top: 0.2vw;
+}
+
+.Footer_reddit{
+    width: 20px;
+    height: 20px;
+    margin-left: 0.1vw;
+    margin-top: 0.2vw;
+}
+
+.Footer_logo_button{
+    height: 35px;
+    width: 35px;
+    background-color: #323230;
+    border: none;       /* 기본 테두리 제거 */
+    outline: none;      /* 포커스 아웃라인 제거 */
+    border: none;
+    border-radius: 14px;
+    margin-top: 5vh;
+    margin-right: 1vw;
+}
+
+.Footer_facebook_button{
+    height: 35px;
+    width: 35px;
+    background-color: #323230;
+    border: none;       /* 기본 테두리 제거 */
+    outline: none;      /* 포커스 아웃라인 제거 */
+    border: none;
+    border-radius: 14px;
+    margin-top: 5vh;
+    margin-right: 1vw;
+}
+
+.Footer_riot_games_logo{
+    width: 100px;  /* 원하는 너비로 조정 */
+    height: 30px;  /* 비율을 유지하면서 높이를 자동으로 조정 */
+    
+}
+
+.Footer_text{
+    font-size: 14px;
+    color: gray;
+    display: flex;
+    justify-content: center;
+}
+
+.footer-links {
+    display: flex;
+    flex-direction: row; /* 기본값이므로 생략 가능 */
+    gap: 50px; /* 아이템 사이 간격을 원하는 값으로 설정 */
+    justify-content: center;
+    margin-top: 4vh;
+    font-size: 13px;
+  }
+  
+  .footer-link {
+    color: white;
+  }
+  

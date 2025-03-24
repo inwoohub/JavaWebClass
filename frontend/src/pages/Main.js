@@ -1,6 +1,7 @@
 import './Main.css';
 import Header from "../components/Header";
 import News from "../components/News";
+import Footer from "../components/Footer"
 
 
 function Main() {
@@ -33,6 +34,8 @@ function Main() {
             </div>
             
             <News className="News"/>
+
+            <Footer></Footer>
         </div>
       );
 
