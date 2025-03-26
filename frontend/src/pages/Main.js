@@ -34,7 +34,7 @@ function Main() {
             </div>
             
             <News className="News"/>
-
+ 
             <Footer></Footer>
         </div>
       );
