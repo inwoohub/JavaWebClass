@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index_login.html 페이지</title>
+    <script>
+      function displayLoginInfo(){
+        // URL 쿼리 스트링 파싱
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get('id');
+        const password = params.get('password');
+
+        // 각 값을 표시할 요소를 별도로 찾아서 출력
+        const emailElem = document.getElementById('emailInfo');
+        const passwordElem = document.getElementById('passwordInfo');
+
+        if(email){
+          emailElem.innerText = "Email: " + email;
+        } else {
+          emailElem.innerText = "Email 정보가 전달되지 않았습니다.";
+        }
+
+        if(password){
+          passwordElem.innerText = "Password: " + password;
+        } else {
+          passwordElem.innerText = "비밀번호 정보가 전달되지 않았습니다.";
+        }
+      }
+    </script>
+  </head>
+  <body style="background-color: #1A2B3B; color: #eee;" onload="displayLoginInfo();">
+    <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 20px; padding: 0 20px;">
+        <h2>로그아웃 메인화면</h2>
+        <a href="../index.html" 
+        style="background-color: #1A2B3B; border: 1px solid #eee; border-radius: 1px; color: #eee; width: 10vw;  height: 5vh;
+        display: flex; justify-content: center; align-items: center; text-decoration: none;" 
+        id="logout_btn">로그아웃</a>
+      </div>
+  </body>
+</html>

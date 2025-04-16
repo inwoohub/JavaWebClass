@@ -1,0 +1,51 @@
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index_login.html페이지</title>
+  </head>
+  <body style="background-color: #1A2B3B; color: #eee;" onload="clock();">
+    <span>
+        로그인 페이지
+    </span>
+  </body>
+</html> -->
+
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>index_login.html 페이지</title>
+    <script>
+      function displayLoginInfo(){
+        // URL 쿼리 스트링 파싱
+        const params = new URLSearchParams(window.location.search);
+        const email = params.get('id');
+        const password = params.get('password');
+
+        // 각 값을 표시할 요소를 별도로 찾아서 출력
+        const emailElem = document.getElementById('emailInfo');
+        const passwordElem = document.getElementById('passwordInfo');
+
+        if(email){
+          emailElem.innerText = "Email: " + email;
+        } else {
+          emailElem.innerText = "Email 정보가 전달되지 않았습니다.";
+        }
+
+        if(password){
+          passwordElem.innerText = "Password: " + password;
+        } else {
+          passwordElem.innerText = "비밀번호 정보가 전달되지 않았습니다.";
+        }
+      }
+    </script>
+  </head>
+  <body style="background-color: #1A2B3B; color: #eee;" onload="displayLoginInfo();">
+    <h2>로그인 페이지</h2>
+    <!-- 각각의 정보를 표시할 별도의 영역 -->
+    <span id="emailInfo"></span><br>
+    <span id="passwordInfo"></span>
+  </body>
+</html>
