@@ -6,9 +6,16 @@
 
 
 
+// function googleSearch() {
+//     const searchTerm = document.getElementById("search_input").value; // 검색어로 설정
+//     const googleSearchUrl = `https://www.google.com/search?q=${encodeURIComponent(searchTerm)}`;
+//     alert("구글로 "+searchTerm+" 검색을 수행합니다!");
+//     // 새 창에서 구글 검색을 수행
+//     window.open(googleSearchUrl, "_blank"); // 새로운 창에서 열기.
+// }
+
 function googleSearch() {
-    const inputEl = document.getElementById("search_input");
-    const rawTerm = inputEl.value;
+    const rawTerm = document.getElementById("search_input").value; // 검색어로 설정
     const searchTerm = rawTerm.trim(); // 앞뒤 공백 제거
   
     // 1) 공백 검사
@@ -34,7 +41,6 @@ function googleSearch() {
     alert("구글로 \"" + searchTerm + "\" 검색을 수행합니다!");
     window.open(googleSearchUrl, "_blank");
   }
-  
 
 // function NaverSearch() {
 //     const searchTerm = document.getElementById("search_input").value; // 검색어로 설정
