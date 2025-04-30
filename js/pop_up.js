@@ -1,8 +1,37 @@
 
-function pop_up() {
-  var popupWindow = window.open('../popup/popup.html', '팝업창', 'width=600,height=400');
+// function pop_up() {
+//   var popupWindow = window.open('../popup/popup.html', '팝업창', 'width=600,height=400');
+// }
+
+function setCookie(name, value, expiredays) {
+  var date = new Date();
+  date.setDate(date.getDate() + expiredays);
+  document.cookie = escape(name) + "=" + escape(value) + "; expires=" + date.toUTCString() + "; path=/" + ";SameSite=None; Secure";
+  // document.cookie = encodeURIComponent(name) + "=" + encodeURIComponent(value) +"; expires=" + date.toUTCString() +"; path=/";
 }
 
+function getCookie(name) {
+  var cookie = document.cookie;
+  console.log("쿠키를 요청합니다.");
+  if (cookie != "") {
+    var cookie_array = cookie.split("; ");
+    for ( var index in cookie_array) {
+      var cookie_name = cookie_array[index].split("=");
+      if (cookie_name[0] == "popupYN") {
+        return cookie_name[1];
+      }
+    }
+  }
+  return ;
+  }
+
+function pop_up() {
+  var cookieCheck = getCookie("popupYN");
+  if (cookieCheck != "N"){
+  window.open('../popup/popup.html', '팝업창', 'width=600,height=400');
+  }
+}
+  
 
 // 함수 이름을 clock()으로 사용하고, 자기 자신을 호출하도록 수정
 function clock(){
@@ -27,6 +56,11 @@ function clock(){
   setTimeout(clock, 1000); // 1초마다 자기 자신 재호출
 }
 
-
-
+function closePopup() {
+  if (document.getElementById('check_popup').value) {
+  setCookie("popupYN", "N", 1);
+  console.log("쿠키를 설정합니다.");
+  self.close();
+  }
+  }
   

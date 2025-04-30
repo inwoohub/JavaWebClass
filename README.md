@@ -1,5 +1,5 @@
 # HTML 프로젝트 - 깃허브
-새로운 시작! 웹 서비스 개발의 세계로 떠나보아요~
+자바웹프로그래밍 수업내용
 ## Getting Started
 This project is a starting point for a Web application.
 - [프로젝트 메인 주소](https://github.com/본인아이디/WEB_MAIN)
@@ -16,4 +16,8 @@ This project is a starting point for a Web application.
 ## 6주차<br>
 ## ⤷ 지난주내용 살펴보기 쪽에서 시험문제 가능성 높음 / 함수명 바꾸기 => 방법으로 함수 표현 가능<br>
 ## ⤷ 로그인 / 로그아웃 / 팝업 시간 지나면 종료
+## 7,8주차 <br>
+## ⤷ 공부 및 시험
+## 9주차<br>
+## ⤷ 아이디 & 비밀번호 조건주기 , XSS (악성스크립트) 방지 외부라이브러리씀, 간단한 쿠키 만듦 (+보안 Secure)
 
