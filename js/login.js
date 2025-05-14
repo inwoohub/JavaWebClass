@@ -15,10 +15,10 @@ function updateLoginStatus() {
     }
   }
 
-  function reset_login_failures() {
-    deleteCookie("login_failed");  // 실패 기록 삭제
-    updateLoginStatus();           // 화면 상태 갱신
-  }
+function reset_login_failures() {
+  deleteCookie("login_failed");  // 실패 기록 삭제
+  updateLoginStatus();           // 화면 상태 갱신
+}
 
 function setCookie(name, value, days) {
     const date = new Date();
@@ -97,6 +97,7 @@ const check_input = () => {
     const passwordInput = document.getElementById('typePasswordX');
     // 전역 변수 추가, 맨 위 위치
     const idsave_check = document.getElementById('idSaveCheck');
+      
     
     
     alert('아이디, 패스워드를 체크합니다');
@@ -162,6 +163,13 @@ const check_input = () => {
         return false;
     }
 
+
+    const payload = {
+      id: emailValue,
+      exp: Math.floor(Date.now() / 1000) + 3600 // 1시간 (3600초)
+      };
+      const jwtToken = generateJWT(payload);
+
     if(idsave_check.checked == true) { // 아이디 체크 o
         alert("쿠키를 저장합니다.", emailValue);
         setCookie("id", emailValue, 1); // 1일 저장
@@ -173,12 +181,39 @@ const check_input = () => {
     
     console.log('이메일:', emailValue);
     console.log('비밀번호:', passwordValue);
+
     login_count();
     session_set(); // 세션 생성
+    localStorage.setItem('jwt_token', jwtToken);
+
     reset_login_failures();
     loginForm.submit();
 };
 
+function init_logined() {
+  if (!sessionStorage) {
+    alert("세션 스토리지 지원 x");
+    return;
+  }
+
+  // 1) 세션 스토리지에서 암호문 꺼내기
+  const cipherText = session_get();
+  if (!cipherText) {
+    console.warn("세션에 저장된 암호문이 없습니다.");
+    return;
+  }
+
+  // 2) 복호화 수행
+  const plainText = decrypt_text(cipherText);
+
+  // 3) 복호된 비밀번호 활용 (예시: 콘솔 출력)
+  console.log("복호된 비밀번호:", plainText);
+
+  // TODO: 복호된 비밀번호로 로그인 상태 유지 로직을 작성하세요.
+}
+
+// 페이지 로드 완료 시 init_logined 자동 실행
+window.addEventListener("DOMContentLoaded", init_logined);
 
 
 
