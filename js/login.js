@@ -1,5 +1,11 @@
 // login.js 파일 최상단에 위치시키세요
 // cookie-utils.js (또는 session.js 맨 위)
+import {session_set,session_get, session_check,session_del, logout , }  from './session.js';
+import {encodeByAES256, decodeByAES256, encrypt_text,decrypt_text}  from './crypto.js';
+import {JWT_SECRET, generateJWT, verifyJWT, isAuthenticated,}  from './jwt_token.js';
+
+
+
 
 const MAX_FAIL = 3;
 function updateLoginStatus() {
@@ -208,6 +214,8 @@ function init_logined() {
 
   // 3) 복호된 비밀번호 활용 (예시: 콘솔 출력)
   console.log("복호된 비밀번호:", plainText);
+
+    
 
   // TODO: 복호된 비밀번호로 로그인 상태 유지 로직을 작성하세요.
 }
