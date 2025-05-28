@@ -1,16 +1,16 @@
 # 자바 웹 프로그래밍
-## 2주차 수업 메인화면 개발 완료! (문제 포함)<br>
+## 2주차 <br>
 ⤷ 비쥬얼 스튜디오 설치 및 github 연동 및 커밋해보기, index.html 만들고 기초 코드 작성해보기<br>
 자바스크립트를 배워본적이 없어서 기대된다. 잘 배워보고싶다.<br><br>
 
-## 3주차 수업 부트스트랩 적용 완료! (문제 제외)<br>
+## 3주차 <br>
 ⤷ 메타데이터 , 하이퍼링크 사용하기 메타데이터 - head 내부, 하이퍼링크 - body 내부, 테이블 만들기.<br>
 찾아보니 메타데이터는 주로 백엔드에서 사용하는 것 같고, 하이퍼링크는 주소를 이동하기 위해서 사용하는 것 같다. <br>
 테이블 표도 쉽게 만들수있는걸 배웠다. 실제로 https://www.kleague.com/record/team.do k리그 순위표인데 <br>
-여기서도 역시 수업 때 배운 테이블로 구성되어있던걸 확인했다. 그래서 혼자 개발하고있는 사이트에서 스크래핑 기술을 통해 테이블 안에있는<br>
+여기서도 역시 수업 때 배운 테이블로 구성되어있던걸 확인했다. 그래서 혼자 개발하고있는 사이트에서 스크래핑 기술을 통해 테이블 안에있는
 데이터들을 가져올 때 더 수월했다.<br><br>
 
-## 4주차 수업 자바스크립트 적용 완료 !<br>
+## 4주차 <br>
 ⤷ defer? js파일 실행 잘 시켜줌 + 검색창 + 부트스트랩에서 제공된 class는 style조심하게 하자.. backcolor넣었다가 안눌려서 고생했다<br>
 네비게이션 바 만들기 , js 부트스트랩 scripts로 태그로 cdn링크에 연동시켜서 사용하기 <br>
 defer를 적지 않고 계속 실행했다가. 스크립트파일이 로딩되기전에 화면에 들어가서 계속 오류를 맛봤다.<br>
@@ -19,8 +19,8 @@ gpt랑 오랜시간 싸우고 찾은 결과 수업자료에 defer 를 유심하�
 ## 5주차 <br>
 ⤷ 구글 및 네이버 검색 연동 https에다가 ='값' 넣어서 함 + 팝업 했음 (modal이랑 비슷함 해당 사이트에서 이벤트or광고에서 팝업 많이 본거같다)<br>
 js파일 + 함수 / index 파일에서 <script></script> 추가 하기 / 그리고 밑에서 함수 불러서 호출해서 사용하기<br>
-진행하고있는 프로젝트에서 modal을 만들어서 써보고 수업 때 popup을 만들어서 써본결과 사용용도는 modal은 광고를 띄우기 보단, 기능 적으로 쓰는게<br>
-더 효과적인 것 같다. 왜냐하면 modal은 새로운창이 아닌, 기존 창에서 업로드 되는 화면 이기 때문에, 로그인 버튼 -> 로그인 모달 이런 식으로 쓰는게 좋아보였다<br><br>
+진행하고있는 프로젝트에서 modal을 만들어서 써보고 수업 때 popup을 만들어서 써본결과 사용용도는 modal은 광고를 띄우기 보단, 기능 적으로 쓰는게 더 효과적인 것 같다. <br>
+왜냐하면 modal은 새로운창이 아닌, 기존 창에서 업로드 되는 화면 이기 때문에, 로그인 버튼 -> 로그인 모달 이런 식으로 쓰는게 좋아보였다<br><br>
 
 ## 6주차<br>
 ⤷ js파일로 데이터 콘솔 출력, 팝업 시간 출력, 부트스트랩 제공 폰트 변경, 이미지 호버 ( 그림 다른거 바꾸기 js로함) <br>
@@ -42,9 +42,9 @@ js파일 + 함수 / index 파일에서 <script></script> 추가 하기 / 그리�
 
 ## 10주차<br>
 ⤷ 로그인 쿠키&세션 만들기, 세션을 통해 로그인 유지 및 로그아웃 하기, 로그인제한, 세션 지우기, 로그인&로그아웃 카운팅<br>
-이번엔 쿠키를 저장해보고, 세션도 처리해봤다. 내가 알고있던 세션은 클라이언트->서버 로 세션을 요청하고 제공받아서 세션 키값을<br>
-통해서 세션을 유지시키는 방법 즉, 신분증을 제시하고 그에 맞는 입장권을 클라이언트가 들고다녀서 매 인증이 필요할 때 서버로 입장권을<br>
-제출하여서 인증 받는 구조라고 알고있다. 하지만, 이 수업은 자바 웹 프로그래밍 (프론트) 만 배우는 수업이라서 그런지 서버가 없다.<br>
+이번엔 쿠키를 저장해보고, 세션도 처리해봤다. 내가 알고있던 세션은 클라이언트->서버 로 세션을 요청하고 제공받아서 세션 키값을
+통해서 세션을 유지시키는 방법 즉, 신분증을 제시하고 그에 맞는 입장권을 클라이언트가 들고다녀서 매 인증이 필요할 때 서버로 입장권을 제출하여서 인증 받는 구조라고 알고있다.<br>
+하지만, 이 수업은 자바 웹 프로그래밍 (프론트) 만 배우는 수업이라서 그런지 서버가 없다.<br>
 그래서 프론트단에서 세션까지 알아서 만들고 처리를 해야했다. sessionStorage를 통해서 세션을 get, set을 통해 올리고 갖다 쓰고 하는 방식이였다.<br><br>
 
 ## 11주차<br>
@@ -66,4 +66,103 @@ js파일 + 함수 / index 파일에서 <script></script> 추가 하기 / 그리�
 그리고 카카오맵 api연동 시키는데 이전, 다른 프로젝트를 진행하면서 카카오 로그인 api를 써먹어본적이있다. 그때 4시간동안 로그인관련해서 고생했었는데<br>
 이번 카카오맵 api를 써먹는데 단 1시간도 안 걸렸던 것 같다. 혼자 찾아보면서 해보는것과 누군가에게 배우면서 사용한다는게 이렇게 차이가 큰줄 몰랐다.<br>
 심지어 카카오맵 api를 불러오고 지도에서 다른 기능등을 추가하는데도 어려움이 없었다. 나중에 지도가 필요한 프로젝트가 있다면, 쉽게 사용가능 할 것 같다.<br><br>
+
+## 응용 문제<br>
+
+## 주제선정, 데이터 수정
+⤷ LOL 웹사이트를 한번 만들어보라는 교수님 말씀에 그나마 프론트에서 써본적 있는 React 툴을 활용해서 만들어 보았다. <br>
+Main.js 를 통해서 메인페이지를 만들었고 Components 폴더를 통해서 Footer, Header, News 등등 컴포넌트를 만들어서 메인페이지에 불러다 썼다.<br>
+그리고 로고 이미지, 뉴스 이미지 등등 필요한 이미지나 png는 public폴더에 넣어서 롤 메인페이지를 만들어 보았었다.<br><br>
+
+## 표에다가 하이퍼링크 달기
+⤷ <a href="https://www.leagueoflegends.com/ko-kr/"><text>를 웹사이트로 접속하기</text></a> 처럼 a태그안에 href를 통해서 하이퍼 링크를 추가했다.<br>
+그리고 <img src="image/Vi.png" width="50" height="50"> 처럼 img 태그를 통해서 이미지도 테이블 안에 추가 가능했다.<br><br>
+<br><br>
+
+## 네비게이션 바 하이퍼링크, 색상, 테이블 색상 적용하기
+⤷ 네이베기연 바 하이퍼링크는 <li class="nav-item"><a class="nav-link active" aria-current="page" href="http://127.0.0.1:5501/" style="color: #eee;">홈페이지</a></li>처럼
+추가할 수 있었다 . 색상은 태그 내부에서  <tr bgcolor="gray"> 를 통해서 색상을 적용할 수 있었다.
+<br><br>
+
+## 문자열 및 비속어 검사
+⤷ if (searchTerm.length === 0) 을 통해서 문자열 길이가 0일때 중단 시키고, <br>
+const badWords = ["시x", "병x", "개xx", "x", "ㅅx"];<br>
+    for (let i = 0; i < badWords.length; i++) {<br>
+      if (searchTerm.includes(badWords[i])) {<br>
+        alert("검색어에 부적절한 단어가 포함되어 있습니다.");<br>
+        return;<br>
+      }<br>
+    }<br>
+를 통해서 미리 배열내에 블랙리스트 단어들을 만들어 둔 후, 만약 배열내 단어와 같다면, 함수 중단하게 즉, 검색이 안되게끔 했다.
+<br><br>
+
+## logout.html & 로그아웃 버튼 만들기
+⤷ 기존 index_login.html를 코드를 복사한 logout.html 만들고 사용했지만, 편리성을 위해서 코드 수정을 했다.<br>
+로그아웃버튼->logout.html 로 이동->로그아웃버튼 을 해야 index.html 로 이동하게끔 했지만, 이 3단계를 거쳐서 로그아웃하는게 불편해서
+지금은 로그아웃버튼->index.html 로 이동하게 했다.<br>
++ 나중에 세션을 배우면서 logout.js 또한 주석 처리 후 session에서 로그잇 & 로그아웃을 관리한다.<br>
+물론 /page/logut.html 로 화면은 만들어둬서 주소로 입력해서 접근은 가능하다.
+<br><br>
+
+## login.js check_input 수정하기
+⤷ emailValue.length > 10 , passwordValue.length > 15 처럼 if 문 조건을 만들어주고 , <br>
+const repeatPattern = /(.{3,})\1/; <br>
+    if ( repeatPattern.test(emailValue) || repeatPattern.test(passwordValue) ) { <br>
+        alert('3글자 이상 반복되는 문자열은 허용되지 않습니다.'); <br>
+        login_failed(); updateLoginStatus(); <br>
+        return false;<br>
+    }<br>
+const numRepeatPattern = /(\d{2,}).*\1/;<br>
+    if ( numRepeatPattern.test(emailValue) || numRepeatPattern.test(passwordValue) ) {<br>
+        alert('2글자 이상의 숫자 반복 입력은 허용되지 않습니다.');<br>
+        login_failed(); updateLoginStatus();<br>
+        return false;<br>
+    }<br>
+와 처럼 3글자 이상 반복과 2글자 이상 숫자 반복을 방지했다.
+<br><br>
+
+## 로그인 / 로그아웃 횟수 쿠키 저장하기
+⤷ function login_count() { <br>
+    let cnt = parseInt(getCookie("login_cnt"), 10);<br>
+    if (isNaN(cnt)) cnt = 0;<br>
+    cnt += 1;<br>
+    setCookie("login_cnt", cnt, 365);<br>
+}<br>
+를 통해서 로그인시 login_cnt 라는 쿠키이름으로 cnt 값을 1씩 증가 시킨다.<br>
+let cnt = parseInt(getCookie("login_cnt"), 10);<br>
+    if (isNaN(cnt)) cnt = 0;<br>
+    cnt = Math.max(cnt - 1, 0);<br>
+    setCookie("login_cnt", cnt, 365);<br>
+를 통해서 logout 함수 실행시 cnt를 -1 감소 시킨다. 만약 cnt가 0이면, Math.max(-1, 0)이 0이 되므로 더 이상 내려가지않는다.
+<br><br>
+
+## 세션 스토리지 로그아웃 구현 및 로그인 실패 횟수 구현
+⤷ sessionStorage.removeItem("Session_Storage_id"); 를 통해서 세션에 있는 세션_id 삭제를 하고, <br>
+function login_failed() { <br>
+    let cnt = parseInt(getCookie("login_failed"), 10);<br>
+    if (isNaN(cnt)) cnt = 0;<br>
+    cnt += 1;<br>
+    setCookie("login_failed", cnt, 1);<br>
+    console.log(`로그인 실패 횟수: ${cnt}`);<br>=
+  }<br>
+함수를 통해서 실패시 login_failed cnt를 1씩 증가한다. 그리고 <br>
+const MAX_FAIL = 3;<br>
+function updateLoginStatus() {<br>
+    const statusEl = document.getElementById("login_status");<br>
+    let cnt = parseInt(getCookie("login_failed"), 10) || 0;<br>
+    if (cnt >= MAX_FAIL) {<br>
+      statusEl.innerText = `로그인 ${cnt}회 실패: 잠시 로그인 제한 상태입니다.`;<br>
+    } else if (cnt > 0) {<br>
+      statusEl.innerText = `로그인 실패: ${cnt}회 (3회 이상 제한)`;<br>
+    } else {<br>
+      statusEl.innerText = "";<br>
+    }<br>
+  }<br>
+  를 통해서 3번 이상 틀렸을 시 로그인 제한 상태를 화면에 출력했다.
+
+## 11주차 찾아보기
+
+
+
+
 

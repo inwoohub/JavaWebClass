@@ -134,12 +134,39 @@ const check_input = () => {
         updateLoginStatus();
         return false;
         }
+    if (emailValue.length > 10) {
+        alert('이메일은 최대 10글자 이하여야 합니다.');
+        login_failed(); updateLoginStatus();
+        return false;
+    }
     if (passwordValue.length < 12) {
         alert('비밀번호는 반드시 12글자 이상 입력해야 합니다.');
         login_failed();
         updateLoginStatus();
         return false;
     }
+    if (passwordValue.length > 15) {
+      alert('비밀번호는 최대 15글자 이하여야 합니다.');
+      login_failed(); updateLoginStatus();
+      return false;
+    }
+
+    // 3글자 이상 반복된 문자열 금지 (e.g. abcabc, 아이디는아이디)
+    const repeatPattern = /(.{3,})\1/;
+    if ( repeatPattern.test(emailValue) || repeatPattern.test(passwordValue) ) {
+        alert('3글자 이상 반복되는 문자열은 허용되지 않습니다.');
+        login_failed(); updateLoginStatus();
+        return false;
+    }
+
+    // 2자리 이상의 숫자 시퀀스 반복 금지 (e.g. 12...12)
+    const numRepeatPattern = /(\d{2,}).*\1/;
+    if ( numRepeatPattern.test(emailValue) || numRepeatPattern.test(passwordValue) ) {
+        alert('2글자 이상의 숫자 반복 입력은 허용되지 않습니다.');
+        login_failed(); updateLoginStatus();
+        return false;
+    }
+
         const hasSpecialChar = passwordValue.match(/[!,@#$%^&*()_+\- =\[\]{};':"\\|,.<>\/?]+/) !== null;
     if (!hasSpecialChar) {
         alert('패스워드는 특수문자를 1개 이상 포함해야 합니다.');
