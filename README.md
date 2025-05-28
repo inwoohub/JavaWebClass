@@ -26,3 +26,5 @@ This project is a starting point for a Web application.
 ## ⤷ 로그인시 패스워드 암호화로 세션에 저장-> 복호화해서 콘솔로 찍어내기 , 토큰 -> 로컬스트리지의 저장 (단방향)<br><br>
 ## 12주차<br>
 ## ⤷ js 모듈화 export로 내보내고 import로 함수 가져와서 사용 , 회원가입 페이지
+## 13주차<br>
+## ⤷ 프로필페이지(부트스트랩) , 카카오맵 api활용해서 지도 표기
