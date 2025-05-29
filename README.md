@@ -69,22 +69,22 @@ js파일 + 함수 / index 파일에서 <script></script> 추가 하기 / 그리�
 
 ## 응용 문제<br>
 
-## 주제선정, 데이터 수정
+## 2주차 주제선정, 데이터 수정
 ⤷ LOL 웹사이트를 한번 만들어보라는 교수님 말씀에 그나마 프론트에서 써본적 있는 React 툴을 활용해서 만들어 보았다. <br>
 Main.js 를 통해서 메인페이지를 만들었고 Components 폴더를 통해서 Footer, Header, News 등등 컴포넌트를 만들어서 메인페이지에 불러다 썼다.<br>
 그리고 로고 이미지, 뉴스 이미지 등등 필요한 이미지나 png는 public폴더에 넣어서 롤 메인페이지를 만들어 보았었다.<br><br>
 
-## 표에다가 하이퍼링크 달기
-⤷ <a href="https://www.leagueoflegends.com/ko-kr/"><text>를 웹사이트로 접속하기</text></a> 처럼 a태그안에 href를 통해서 하이퍼 링크를 추가했다.<br>
-그리고 <img src="image/Vi.png" width="50" height="50"> 처럼 img 태그를 통해서 이미지도 테이블 안에 추가 가능했다.<br><br>
+## 3주차 표에다가 하이퍼링크 달기
+⤷ href="https://www.leagueoflegends.com/ko-kr/"를 a태그안에 href를 통해서 하이퍼 링크를 추가했다.<br>
+그리고 처럼 img 태그를 통해서 이미지도 테이블 안에 추가 가능했다.<br><br>
 <br><br>
 
-## 네비게이션 바 하이퍼링크, 색상, 테이블 색상 적용하기
-⤷ 네이베기연 바 하이퍼링크는 <li class="nav-item"><a class="nav-link active" aria-current="page" href="http://127.0.0.1:5501/" style="color: #eee;">홈페이지</a></li>처럼
-추가할 수 있었다 . 색상은 태그 내부에서  <tr bgcolor="gray"> 를 통해서 색상을 적용할 수 있었다.
+## 4주차 네비게이션 바 하이퍼링크, 색상, 테이블 색상 적용하기
+⤷ 네이베이션 바 하이퍼링크는 href="http://127.0.0.1:5501/" 태그안에 추가할 수 있었다.<br>
+색상은 태그 내부에서  bgcolor="gray" 를 통해서 색상을 적용할 수 있었다.<br>
 <br><br>
 
-## 문자열 및 비속어 검사
+## 5주차 문자열 및 비속어 검사
 ⤷ if (searchTerm.length === 0) 을 통해서 문자열 길이가 0일때 중단 시키고, <br>
 const badWords = ["시x", "병x", "개xx", "x", "ㅅx"];<br>
     for (let i = 0; i < badWords.length; i++) {<br>
@@ -96,7 +96,7 @@ const badWords = ["시x", "병x", "개xx", "x", "ㅅx"];<br>
 를 통해서 미리 배열내에 블랙리스트 단어들을 만들어 둔 후, 만약 배열내 단어와 같다면, 함수 중단하게 즉, 검색이 안되게끔 했다.
 <br><br>
 
-## logout.html & 로그아웃 버튼 만들기
+## 6주차 logout.html & 로그아웃 버튼 만들기
 ⤷ 기존 index_login.html를 코드를 복사한 logout.html 만들고 사용했지만, 편리성을 위해서 코드 수정을 했다.<br>
 로그아웃버튼->logout.html 로 이동->로그아웃버튼 을 해야 index.html 로 이동하게끔 했지만, 이 3단계를 거쳐서 로그아웃하는게 불편해서
 지금은 로그아웃버튼->index.html 로 이동하게 했다.<br>
@@ -104,7 +104,7 @@ const badWords = ["시x", "병x", "개xx", "x", "ㅅx"];<br>
 물론 /page/logut.html 로 화면은 만들어둬서 주소로 입력해서 접근은 가능하다.
 <br><br>
 
-## login.js check_input 수정하기
+## 9주차 login.js check_input 수정하기
 ⤷ emailValue.length > 10 , passwordValue.length > 15 처럼 if 문 조건을 만들어주고 , <br>
 const repeatPattern = /(.{3,})\1/; <br>
     if ( repeatPattern.test(emailValue) || repeatPattern.test(passwordValue) ) { <br>
@@ -121,7 +121,7 @@ const numRepeatPattern = /(\d{2,}).*\1/;<br>
 와 처럼 3글자 이상 반복과 2글자 이상 숫자 반복을 방지했다.
 <br><br>
 
-## 로그인 / 로그아웃 횟수 쿠키 저장하기
+## 10주차 로그인 / 로그아웃 횟수 쿠키 저장하기
 ⤷ function login_count() { <br>
     let cnt = parseInt(getCookie("login_cnt"), 10);<br>
     if (isNaN(cnt)) cnt = 0;<br>
@@ -136,7 +136,7 @@ let cnt = parseInt(getCookie("login_cnt"), 10);<br>
 를 통해서 logout 함수 실행시 cnt를 -1 감소 시킨다. 만약 cnt가 0이면, Math.max(-1, 0)이 0이 되므로 더 이상 내려가지않는다.
 <br><br>
 
-## 세션 스토리지 로그아웃 구현 및 로그인 실패 횟수 구현
+## 10주차 세션 스토리지 로그아웃 구현 및 로그인 실패 횟수 구현
 ⤷ sessionStorage.removeItem("Session_Storage_id"); 를 통해서 세션에 있는 세션_id 삭제를 하고, <br>
 function login_failed() { <br>
     let cnt = parseInt(getCookie("login_failed"), 10);<br>
@@ -158,9 +158,78 @@ function updateLoginStatus() {<br>
       statusEl.innerText = "";<br>
     }<br>
   }<br>
-  를 통해서 3번 이상 틀렸을 시 로그인 제한 상태를 화면에 출력했다.
+  를 통해서 3번 이상 틀렸을 시 로그인 제한 상태를 화면에 출력했다.<br>
+  <br>
 
-## 11주차 찾아보기
+## 11주차 Crypto2.js 만들고 AES-256-GCM 대칭 암호 알고리즘 구현
+⤷ 우선 기존 실습 때 했던 crypto.js는 AES-CBC 알고리즘으로 cryptoJS라이브러리를 사용했다.<br>
+encodeByAES256(key, data)호출 → CryptoJS.AES.encrypt(…) → 결과를 Base64 문자열로 반환 이었고, 이 문자열을 sessionStorage에
+session_storage_pass라는 세션으로 저장하였다.<br>
+하지만 crypto2.js에서는 AES-GCM 알고리즘으로 브라우저 내장 Web Crypto API 사용했다.<br>
+TextEncoder로 SECRET 문자열을 UTF-8 바이트로 변환 후, 처음 32바이트만 잘라서 crypto.subtle.importKey('raw', raw, {name:'AES-GCM'},…)로 암호화·복호화 가능한 CryptoKey 객체 생성했다.<br>
+동작 흐름은 encryptSession(plainText) 를 통해서 랜덤 IV 생성 → crypto.subtle.encrypt({name:'AES-GCM', iv}, key, plainTextBytes) 호출 → ArrayBuffer(암호문+인증태그) 반환 → IV와 암호문을 각각 Base64로 인코딩해 "iv:ct" 형태의 문자열로 합쳐서 반환 → 이 문자열을 sessionStorage → 
+"iv:ct"를 split(':') → Base64 디코딩 → IV와 암호문(Uint8Array)으로 분리 → crypto.subtle.decrypt({name:'AES-GCM', iv}, key, ctBytes) 호출 → 인증태그 검증 후 평문(ArrayBuffer) 반환 → TextDecoder로 디코딩해 원래 문자열 획득 하였다.<br>
+따라서, sessionStorage_pass는 AES-CBC 방식으로 단순 암호화만 하고,sessionStorage_pass2는 AES-GCM 방식으로 암호화와 함께 데이터 무결성 검증(인증태그)을 제공하는 방식으로 동작한다.<br>
+<br>
+
+## 11주차 로그 아웃 처리
+⤷ 세션과 쿠키를 삭제하기위해서 session.js 에서 로그아웃을 할 수있는 함수 session_del, logout 를 만들었다. <br>
+  핵심으로는 하나의 아이템만 삭제하는 sessionStorage.removeItem("Session_Storage_id"); 방법과, deleteCookie("id"); 방법을 사용했다.<br>
+  export function session_del() {<br>
+    if (sessionStorage) {<br>
+    sessionStorage.removeItem("Session_Storage_id");<br>
+    alert('로그아웃 버튼 클릭 확인 : 세션 스토리지를 삭제합니다.');<br>
+    } else {<br>
+    alert("세션 스토리지 지원 x");<br>
+    }<br>
+}<br>
+<br>
+export function logout(event) {<br>
+    if (event) event.preventDefault();<br>
+    session_del();<br>
+    let cnt = parseInt(getCookie("login_cnt"), 10);<br>
+    if (isNaN(cnt)) cnt = 0;<br>
+    cnt = Math.max(cnt - 1, 0);<br>
+    setCookie("login_cnt", cnt, 365);<br>
+    deleteCookie("id");<br>
+    window.location.href = "/index.html";<br>
+  }<br>
+  와 같은 함수를 만들었다.<br>
+<br>
+
+## 12주차 회원 가입 후 암호화된 객체 저장하기 및 consol.log
+⤷ session.js 에서 미리 session_set2라는 함수를 만들어뒀다. const en_text = encrypt_text(objString); 를 통해서 암호화를 하고 
+const en_text = encrypt_text(objString);<br>
+sessionStorage.setItem("Session_Storage_user",   signUpObj._email); <br>
+sessionStorage.setItem("Session_Storage_object", objString);<br>
+sessionStorage.setItem("Session_Storage_pass",   en_text);<br>
+console.log("====== 세션 스토리지 전체 목록 ======");<br>
+for (let i = 0; i < sessionStorage.length; i++) {<br>
+  const key   = sessionStorage.key(i);<br>
+  const value = sessionStorage.getItem(key);<br>
+  console.log(key, ":", value); } <br>
+처럼 세션을 스토리지에 저장 후, 콘솔 로그로 확인까지 했다. 암호화는 기존 crypto.js 에서 만들었던 encrypt_text() 를 활용했다.<br>
+<br>
+
+## 12주차 로그인 후 복호화 된 객체 내용 출력하기
+⤷ login.js에서 init_logined() 함수를 만들어서 출력했다.<br>
+sessionStorage.getItem를 통해서 해당 세션을 가져오고 기존 crypto.js와 crypto2.js 에서 만들어두었던,<br>
+decrypt_text(),decryptSession() 함수를 호출해서 복호화를 하였다.<br>
+그러고 console.log를 통해서 복호화된 객체를 출력하였다. 아래는 사용한 핵심 코드 들이다.<br>
+const oldCipher = sessionStorage.getItem('Session_Storage_pass');<br>
+const oldPlain = decrypt_text(oldCipher);<br>
+console.log('복호화 결과 (Session_Storage_pass):', oldPlain);<br>
+const newCipher = sessionStorage.getItem('Session_Storage_pass2');<br>
+const newPlain = await decryptSession(newCipher);<br>
+console.log('복호화 결과 (Session_Storage_pass2):', newPlain);<br>
+<br>
+
+## 13주차 카카오 맵 - 좌표로 주소 출력하기
+⤷ 실습 때 까지 해뒀던, 지도 불러오기에서 좌표로 주소를 얻어내기 를 추가했다.<br>
+제공해주는 javascripts를 map.js에 추가해주고, 제공해주는 html코드를<br>
+profile.html 하단에 나타날 수 있도록 추가해주었다.<br>
+교수님께서 style 태그 등 css 코드들은 css 폴더에 profile.css에 추가하라 하셔서 링크 태그를 추가하여, profile.css와 연동했다.<br>
+<br>
 
 
 

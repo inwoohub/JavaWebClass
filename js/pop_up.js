@@ -23,12 +23,12 @@ function getCookie(name) {
     }
   }
   return ;
-  }
+}
 
 function pop_up() {
   var cookieCheck = getCookie("popupYN");
   if (cookieCheck != "N"){
-  window.open('../popup/popup.html', '팝업창', 'width=600,height=400');
+    window.open('../popup/popup.html', '팝업창', 'width=600,height=400');
   }
 }
   
@@ -58,9 +58,9 @@ function clock(){
 
 function closePopup() {
   if (document.getElementById('check_popup').value) {
-  setCookie("popupYN", "N", 1);
-  console.log("쿠키를 설정합니다.");
-  self.close();
+    setCookie("popupYN", "N", 1);
+    console.log("쿠키를 설정합니다.");
+    self.close();
   }
-  }
+}
   

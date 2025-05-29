@@ -1,257 +1,192 @@
-// login.js 파일 최상단에 위치시키세요
-// cookie-utils.js (또는 session.js 맨 위)
-import {session_set,session_get, session_check,session_del, logout , }  from './session.js';
-import {encodeByAES256, decodeByAES256, encrypt_text,decrypt_text}  from './crypto.js';
-import {JWT_SECRET, generateJWT, verifyJWT, isAuthenticated,}  from './jwt_token.js';
+// login.js
 
+// ─── 모듈 임포트 ───────────────────────────
+import { session_check, logout } from './session.js';
+import { encrypt_text, decrypt_text } from './crypto.js';       // 기존 CryptoJS-CBC 방식
+import { encryptSession, decryptSession } from './crypto2.js';   // Web Crypto API AES-GCM 방식
+import { JWT_SECRET, generateJWT } from './jwt_token.js';
 
-
-
+// ─── 상수 정의 ────────────────────────────
 const MAX_FAIL = 3;
-function updateLoginStatus() {
-    const statusEl = document.getElementById("login_status");
-    let cnt = parseInt(getCookie("login_failed"), 10) || 0;
-  
-    if (cnt >= MAX_FAIL) {
-      statusEl.innerText = `로그인 ${cnt}회 실패: 잠시 로그인 제한 상태입니다.`;
-    } else if (cnt > 0) {
-      statusEl.innerText = `로그인 실패: ${cnt}회 (3회 이상 제한)`;
-    } else {
-      statusEl.innerText = "";
+
+// ─── 쿠키 헬퍼 ─────────────────────────────
+function setCookie(name, value, days) {
+  const date = new Date();
+  date.setTime(date.getTime() + days * 24 * 60 * 60 * 1000);
+  document.cookie =
+    encodeURIComponent(name) + "=" + encodeURIComponent(value) +
+    "; expires=" + date.toUTCString() +
+    "; path=/";
+}
+
+function getCookie(name) {
+  const cookies = document.cookie.split('; ');
+  for (let c of cookies) {
+    const [key, val] = c.split('=');
+    if (decodeURIComponent(key) === name) {
+      return decodeURIComponent(val);
     }
   }
+  return null;
+}
+
+function deleteCookie(name) {
+  document.cookie =
+    encodeURIComponent(name) +
+    "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+}
+
+// ─── 로그인 실패/횟수 헬퍼 ──────────────────
+function updateLoginStatus() {
+  const statusEl = document.getElementById('login_status');
+  let cnt = parseInt(getCookie('login_failed'), 10) || 0;
+
+  if (cnt >= MAX_FAIL) {
+    statusEl.innerText = `로그인 ${cnt}회 실패: 잠시 로그인 제한 상태입니다.`;
+  } else if (cnt > 0) {
+    statusEl.innerText = `로그인 실패: ${cnt}회 (3회 이상 제한)`;
+  } else {
+    statusEl.innerText = '';
+  }
+}
+
+function login_failed() {
+  let cnt = parseInt(getCookie('login_failed'), 10);
+  if (isNaN(cnt)) cnt = 0;
+  cnt += 1;
+  setCookie('login_failed', cnt, 1);
+  updateLoginStatus();
+}
 
 function reset_login_failures() {
-  deleteCookie("login_failed");  // 실패 기록 삭제
-  updateLoginStatus();           // 화면 상태 갱신
+  deleteCookie('login_failed');
+  updateLoginStatus();
 }
 
-function setCookie(name, value, days) {
-    const date = new Date();
-    date.setTime(date.getTime() + days*24*60*60*1000);
-    document.cookie =
-      encodeURIComponent(name) + "=" + encodeURIComponent(value) +
-      "; expires=" + date.toUTCString() +
-      "; path=/";
-  }
-  
-  function getCookie(name) {
-    const cookies = document.cookie.split("; ");
-    for (let c of cookies) {
-      const [key, val] = c.split("=");
-      if (decodeURIComponent(key) === name) {
-        return decodeURIComponent(val);
-      }
-    }
-    return null;
-  }
-  
-  function deleteCookie(name) {
-    document.cookie =
-      encodeURIComponent(name) +
-      "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-  }
+function login_count() {
+  let cnt = parseInt(getCookie('login_cnt'), 10);
+  if (isNaN(cnt)) cnt = 0;
+  cnt += 1;
+  setCookie('login_cnt', cnt, 365);
+}
 
-  function login_failed() {
-    let cnt = parseInt(getCookie("login_failed"), 10);
-    if (isNaN(cnt)) cnt = 0;
-    cnt += 1;
-    setCookie("login_failed", cnt, 1);
-    console.log(`로그인 실패 횟수: ${cnt}`);
-    // 필요하면 3회 이상일 때 버튼 비활성화 등 추가 처리
+// ─── XSS 체크 헬퍼 ─────────────────────────
+function check_xss(input) {
+  const DOMPurify = window.DOMPurify;
+  const sanitized = DOMPurify.sanitize(input);
+  if (sanitized !== input) {
+    alert('XSS 공격 가능성이 있는 입력값을 발견했습니다.');
+    return false;
   }
+  return sanitized;
+}
 
-  function login_count() {
-    let cnt = parseInt(getCookie("login_cnt"), 10);
-    if (isNaN(cnt)) cnt = 0;
-    cnt += 1;
-    setCookie("login_cnt", cnt, 365);
-  }
- 
-
-function init(){ // 로그인 폼에 쿠키에서 가져온 아이디 입력
-    const emailInput = document.getElementById('typeEmailX');
-    const idsave_check = document.getElementById('idSaveCheck');
-    let get_id = getCookie("id");
-    if(get_id) {
-    emailInput.value = get_id;
+// ─── 폼 초기화 ────────────────────────────
+function init() {
+  const emailInput   = document.getElementById('typeEmailX');
+  const idsave_check = document.getElementById('idSaveCheck');
+  const savedId      = getCookie('id');
+  if (savedId) {
+    emailInput.value     = savedId;
     idsave_check.checked = true;
-    }
-    session_check(); // 세션 유무 검사
-    }
-
-const check_xss = (input) => {
-    // DOMPurify 라이브러리 로드 (CDN 사용)
-    const DOMPurify = window.DOMPurify;
-    // 입력 값을 DOMPurify로 sanitize
-    const sanitizedInput = DOMPurify.sanitize(input);
-    // Sanitized된 값과 원본 입력 값 비교
-    if (sanitizedInput !== input) {
-        // XSS 공격 가능성 발견 시 에러 처리
-        alert('XSS 공격 가능성이 있는 입력값을 발견했습니다.');
-        return false;
-    }
-    // Sanitized된 값 반환
-    return sanitizedInput;
-    };
-
-
-const check_input = () => {
-    // id가 "login_form"인 폼 선택 (폼 태그에 id가 있어야 함)
-    const loginForm = document.getElementById('login_form');
-    const emailInput = document.getElementById('typeEmailX');
-    const passwordInput = document.getElementById('typePasswordX');
-    // 전역 변수 추가, 맨 위 위치
-    const idsave_check = document.getElementById('idSaveCheck');
-      
-    
-    
-    alert('아이디, 패스워드를 체크합니다');
-        
-    const emailValue = emailInput.value.trim();
-    const passwordValue = passwordInput.value.trim();
-
-    const sanitizedPassword = check_xss(passwordValue);
-    const sanitizedEmail    = check_xss(emailValue);
-
-
-    if (emailValue === '') {
-        alert('이메일을 입력하세요.');
-        login_failed();
-        updateLoginStatus();
-        return false;
-    }
-    if (passwordValue === '') {
-        alert('비밀번호를 입력하세요.');
-        login_failed();
-        updateLoginStatus();
-        return false;
-    }
-
-    if (emailValue.length < 5) {
-        alert('아이디는 최소 5글자 이상 입력해야 합니다.');
-        login_failed();
-        updateLoginStatus();
-        return false;
-        }
-    if (emailValue.length > 10) {
-        alert('이메일은 최대 10글자 이하여야 합니다.');
-        login_failed(); updateLoginStatus();
-        return false;
-    }
-    if (passwordValue.length < 12) {
-        alert('비밀번호는 반드시 12글자 이상 입력해야 합니다.');
-        login_failed();
-        updateLoginStatus();
-        return false;
-    }
-    if (passwordValue.length > 15) {
-      alert('비밀번호는 최대 15글자 이하여야 합니다.');
-      login_failed(); updateLoginStatus();
-      return false;
-    }
-
-    // 3글자 이상 반복된 문자열 금지 (e.g. abcabc, 아이디는아이디)
-    const repeatPattern = /(.{3,})\1/;
-    if ( repeatPattern.test(emailValue) || repeatPattern.test(passwordValue) ) {
-        alert('3글자 이상 반복되는 문자열은 허용되지 않습니다.');
-        login_failed(); updateLoginStatus();
-        return false;
-    }
-
-    // 2자리 이상의 숫자 시퀀스 반복 금지 (e.g. 12...12)
-    const numRepeatPattern = /(\d{2,}).*\1/;
-    if ( numRepeatPattern.test(emailValue) || numRepeatPattern.test(passwordValue) ) {
-        alert('2글자 이상의 숫자 반복 입력은 허용되지 않습니다.');
-        login_failed(); updateLoginStatus();
-        return false;
-    }
-
-        const hasSpecialChar = passwordValue.match(/[!,@#$%^&*()_+\- =\[\]{};':"\\|,.<>\/?]+/) !== null;
-    if (!hasSpecialChar) {
-        alert('패스워드는 특수문자를 1개 이상 포함해야 합니다.');
-        login_failed();
-        updateLoginStatus();
-        return false;
-    }
-    const hasUpperCase = passwordValue.match(/[A-Z]+/) !== null;
-    const hasLowerCase = passwordValue.match(/[a-z]+/) !== null;
-    if (!hasUpperCase || !hasLowerCase) {
-        alert('패스워드는 대소문자를 1개 이상 포함해야 합니다.');
-        login_failed();
-        return false;
-    }
-
-    if (!sanitizedEmail) {
-        // Sanitize된 비밀번호 사용
-        login_failed();
-        updateLoginStatus();
-        return false;
-        }
-
-    if (!sanitizedPassword) {
-        // Sanitize된 비밀번호 사용
-        login_failed();
-        updateLoginStatus();
-        return false;
-    }
-
-
-    const payload = {
-      id: emailValue,
-      exp: Math.floor(Date.now() / 1000) + 3600 // 1시간 (3600초)
-      };
-      const jwtToken = generateJWT(payload);
-
-    if(idsave_check.checked == true) { // 아이디 체크 o
-        alert("쿠키를 저장합니다.", emailValue);
-        setCookie("id", emailValue, 1); // 1일 저장
-        alert("쿠키 값 :" + emailValue);
-        }
-    else{ // 아이디 체크 x
-    setCookie("id", emailValue.value, 0); //날짜를 0 - 쿠키 삭제
-    }
-    
-    console.log('이메일:', emailValue);
-    console.log('비밀번호:', passwordValue);
-
-    login_count();
-    session_set(); // 세션 생성
-    localStorage.setItem('jwt_token', jwtToken);
-
-    reset_login_failures();
-    loginForm.submit();
-};
-
-function init_logined() {
-  if (!sessionStorage) {
-    alert("세션 스토리지 지원 x");
-    return;
   }
-
-  // 1) 세션 스토리지에서 암호문 꺼내기
-  const cipherText = session_get();
-  if (!cipherText) {
-    console.warn("세션에 저장된 암호문이 없습니다.");
-    return;
-  }
-
-  // 2) 복호화 수행
-  const plainText = decrypt_text(cipherText);
-
-  // 3) 복호된 비밀번호 활용 (예시: 콘솔 출력)
-  console.log("복호된 비밀번호:", plainText);
-
-    
-
-  // TODO: 복호된 비밀번호로 로그인 상태 유지 로직을 작성하세요.
 }
 
-// 페이지 로드 완료 시 init_logined 자동 실행
-window.addEventListener("DOMContentLoaded", init_logined);
+// ─── 로그인 검증 & 세션 저장 ─────────────────
+async function check_input(event) {
+  event.preventDefault();
+
+  const loginForm     = document.getElementById('login_form');
+  const emailInput    = document.getElementById('typeEmailX');
+  const passwordInput = document.getElementById('typePasswordX');
+  const idsave_check  = document.getElementById('idSaveCheck');
+
+  const emailValue    = emailInput.value.trim();
+  const passwordValue = passwordInput.value.trim();
+
+  // 입력 검증
+  if (!emailValue || !passwordValue
+      || check_xss(emailValue) === false
+      || check_xss(passwordValue) === false
+      || emailValue.length < 5 || emailValue.length > 10
+      || passwordValue.length < 12 || passwordValue.length > 15
+      || /(.{3,})\1/.test(emailValue + passwordValue)
+      || /(\d{2,}).*\1/.test(emailValue + passwordValue)
+      || !/[!,@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]+/.test(passwordValue)
+      || !/[A-Z]/.test(passwordValue)
+      || !/[a-z]/.test(passwordValue)
+  ) {
+    alert('입력값이 유효하지 않습니다.');
+    login_failed();
+    return;
+  }
+
+  // 로그인 카운트
+  login_count();
+
+  // 세션용 JSON 생성
+  const sessionObj = {
+    id: emailValue,
+    otp: new Date().toISOString()
+  };
+  const sessionStr = JSON.stringify(sessionObj);
+
+  // ── 기존 AES256-CBC 방식 암호화 (JSON) ──
+  const oldEncrypted = encrypt_text(sessionStr);
+  sessionStorage.setItem('Session_Storage_pass', oldEncrypted);
+
+  // ── Web Crypto AES-GCM 방식 암호화 (JSON) ──
+  const newEncrypted = await encryptSession(sessionStr);
+  sessionStorage.setItem('Session_Storage_pass2', newEncrypted);
+
+  sessionStorage.setItem('Session_Storage_id', emailValue);
+  sessionStorage.setItem('Session_Storage_object', sessionStr);
+
+  // JWT 생성 및 저장
+  const payload  = { id: emailValue, exp: Math.floor(Date.now()/1000) + 3600 };
+  const jwtToken = generateJWT(payload);
+  localStorage.setItem('jwt_token', jwtToken);
 
 
 
+  // 아이디 쿠키
+  if (idsave_check.checked) {
+    setCookie('id', emailValue, 1);
+  } else {
+    deleteCookie('id');
+  }
 
-document.getElementById("login_btn").addEventListener('click', check_input);
-  
+  // 실패 기록 초기화
+  reset_login_failures();
+
+  // 폼 제출
+  loginForm.submit();
+}
+
+// ─── 로그인 후 복호화 확인 ─────────────────
+async function init_logined() {
+  if (!sessionStorage) { alert('세션 스토리지 미지원'); return; }
+
+  // 1) 기존 복호화 (JSON)
+  const oldCipher = sessionStorage.getItem('Session_Storage_pass');
+  if (oldCipher) {
+    try {
+      const oldPlain = decrypt_text(oldCipher);
+      console.log('복호화 결과 (Session_Storage_pass):', oldPlain);
+    } catch (e) { console.error('복호화 실패:', e); }
+  }
+
+  // 2) 신규 복호화 (JSON)
+  const newCipher = sessionStorage.getItem('Session_Storage_pass2');
+  if (newCipher) {
+    try {
+      const newPlain = await decryptSession(newCipher);
+      console.log('복호화 결과 (Session_Storage_pass2):', newPlain);
+    } catch (e) { console.error('복호화 실패:', e); }
+  }
+}
+
+// ─── 이벤트 리스너 등록 ─────────────────────
+window.addEventListener('DOMContentLoaded', init);
+window.addEventListener('DOMContentLoaded', init_logined);
+document.getElementById('login_btn').addEventListener('click', check_input);

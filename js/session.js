@@ -22,10 +22,10 @@ export function getCookie(name) {
 }
   
 export  function deleteCookie(name) {
-    document.cookie =
-      encodeURIComponent(name) +
-      "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
-  }
+  document.cookie =
+  encodeURIComponent(name) +
+  "=; expires=Thu, 01 Jan 1970 00:00:00 GMT; path=/";
+}
 
 // function session_set() { //세션 저장
 //     let session_id = document.querySelector("#typeEmailX");
@@ -63,28 +63,34 @@ export function session_set(){ //세션 저장(객체)
     sessionStorage.setItem("Session_Storage_object", objString);
     sessionStorage.setItem("Session_Storage_pass", en_text);
     } else {
-    alert("세션 스토리지 지원 x");
+      alert("세션 스토리지 지원 x");
     }
   }
 
-  export function session_set2(signUpObj) {
-    // 1) 세션 스토리지 지원 여부
-    if (!sessionStorage) {
-      alert("세션 스토리지 지원 x");
-      return;
-    }
-  
-    // 2) 객체 그대로 JSON 문자열로 변환
-    const objString = JSON.stringify(signUpObj);
-  
-    // 3) 암호화
-    const en_text = encrypt_text(objString);
-  
-    // 4) 세션 스토리지에 저장
-    sessionStorage.setItem("Session_Storage_user",   signUpObj._email);  // 이메일만 따로 저장하고 싶다면
-    sessionStorage.setItem("Session_Storage_object", objString);
-    sessionStorage.setItem("Session_Storage_pass",   en_text);
+export function session_set2(signUpObj) {
+  // 1) 세션 스토리지 지원 여부
+  if (!sessionStorage) {
+    alert("세션 스토리지 지원 x");
+    return;
   }
+
+  // 2) 객체 그대로 JSON 문자열로 변환
+  const objString = JSON.stringify(signUpObj);
+
+  // 3) 암호화
+  const en_text = encrypt_text(objString);
+
+  // 4) 세션 스토리지에 저장
+  sessionStorage.setItem("Session_Storage_user",   signUpObj._email);  // 이메일만 따로 저장하고 싶다면
+  sessionStorage.setItem("Session_Storage_object", objString);
+  sessionStorage.setItem("Session_Storage_pass",   en_text);
+  console.log("====== 세션 스토리지 전체 목록 ======");
+  for (let i = 0; i < sessionStorage.length; i++) {
+    const key   = sessionStorage.key(i);
+    const value = sessionStorage.getItem(key);
+    console.log(key, ":", value);
+  }
+}
   
 
 // function session_get() { //세션 읽기
@@ -120,32 +126,32 @@ export function session_check() { //세션 검사
 
 export function session_del() {//세션 삭제
     if (sessionStorage) {
-    sessionStorage.removeItem("Session_Storage_id");
-    alert('로그아웃 버튼 클릭 확인 : 세션 스토리지를 삭제합니다.');
+      sessionStorage.removeItem("Session_Storage_id");
+      alert('로그아웃 버튼 클릭 확인 : 세션 스토리지를 삭제합니다.');
     } else {
-    alert("세션 스토리지 지원 x");
+      alert("세션 스토리지 지원 x");
     }
 }
 
 
 export function logout(event) {
-    if (event) event.preventDefault();
-  
-    // 1) 세션 스토리지 삭제
-    session_del();
-  
-    // 2) login_cnt 감소
-    let cnt = parseInt(getCookie("login_cnt"), 10);
-    if (isNaN(cnt)) cnt = 0;
-    cnt = Math.max(cnt - 1, 0);
-    setCookie("login_cnt", cnt, 365);
-  
-    // 3) id 쿠키 삭제
-    deleteCookie("id");
-  
-    // 4) 리다이렉트
-    window.location.href = "/index.html";
-  }
+  if (event) event.preventDefault();
+
+  // 1) 세션 스토리지 삭제
+  session_del();
+
+  // 2) login_cnt 감소
+  let cnt = parseInt(getCookie("login_cnt"), 10);
+  if (isNaN(cnt)) cnt = 0;
+  cnt = Math.max(cnt - 1, 0);
+  setCookie("login_cnt", cnt, 365);
+
+  // 3) id 쿠키 삭제
+  deleteCookie("id");
+
+  // 4) 리다이렉트
+  window.location.href = "/index.html";
+}
   
 
 
