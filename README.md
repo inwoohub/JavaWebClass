@@ -100,7 +100,7 @@ const badWords = ["시x", "병x", "개xx", "x", "ㅅx"];<br>
 ⤷ 기존 index_login.html를 코드를 복사한 logout.html 만들고 사용했지만, 편리성을 위해서 코드 수정을 했다.<br>
 로그아웃버튼->logout.html 로 이동->로그아웃버튼 을 해야 index.html 로 이동하게끔 했지만, 이 3단계를 거쳐서 로그아웃하는게 불편해서
 지금은 로그아웃버튼->index.html 로 이동하게 했다.<br>
-+ 나중에 세션을 배우면서 logout.js 또한 주석 처리 후 session에서 로그잇 & 로그아웃을 관리한다.<br>
+나중에 세션을 배우면서 logout.js 또한 주석 처리 후 session에서 로그잇 & 로그아웃을 관리한다.<br>
 물론 /page/logut.html 로 화면은 만들어둬서 주소로 입력해서 접근은 가능하다.
 <br><br>
 
