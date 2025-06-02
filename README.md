@@ -1,4 +1,4 @@
-# 자바 웹 프로그래밍
+# 자바 웹 프로그래밍 https://inwoohub.github.io/JavaWebClass/
 ## 2주차 <br>
 ⤷ 비쥬얼 스튜디오 설치 및 github 연동 및 커밋해보기, index.html 만들고 기초 코드 작성해보기<br>
 자바스크립트를 배워본적이 없어서 기대된다. 잘 배워보고싶다.<br><br>
