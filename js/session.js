@@ -150,7 +150,7 @@ export function logout(event) {
   deleteCookie("id");
 
   // 4) 리다이렉트
-  window.location.href = "/index.html";
+  window.location.href = "";
 }
   
 
