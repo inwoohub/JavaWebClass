@@ -15,10 +15,13 @@
         <script type="text/javascript" src="../js/map.js" defer></script>
         <script type="text/javascript" defer src="../js/imageHover.js"></script>
         <script type="text/javascript" src="../js/logout.js" defer></script>
-        <script type="text/javascript" src="../js/session.js" defer></script>
         <script type="module">
           import { requireLogin } from "../js/session.js";
           document.addEventListener("DOMContentLoaded", requireLogin);
+        </script>
+        <script type="module">
+          import { logout } from "../js/session.js";
+          window.logout = logout;
         </script>
         <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ad527180380e69869d5d41076d582dce" defer></script> -->
         <link rel="stylesheet" href="../css/profile.css">
@@ -30,7 +33,7 @@
     <section style="background-color: #eee;">
         <nav class="navbar navbar-expand-lg" class="navbar navbar-expand-lg navbar-light" style="background-color: #171D25;">
             <div class="container-fluid" style="display: flex; justify-content: center;">
-                <a class="navbar-brand" href="http://127.0.0.1:5501/page/index_login.html">
+                <a class="navbar-brand" href="./page/index_login.html">
                   <img src="../image/logo_steam.svg" width="150" height="60"
                   onmouseover="over2(this)" onmouseout="out2(this)">
                 </a>
@@ -40,7 +43,7 @@
               <div class="collapse navbar-collapse" id="navbarSupportedContent" >
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                   <li class="nav-item">
-                    <a class="nav-link active" href="http://127.0.0.1:5501/page/index_login.html" style="color: #eee;">홈페이지</a>
+                    <a class="nav-link active" href="./page/index_login.html" style="color: #eee;">홈페이지</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link active" href="#" style="color: #eee;">게임소개</a>
@@ -81,7 +84,7 @@
                   <input class="form-control me-2" id="search_input" name="q" type="search" placeholder="키워드 입력" aria-label="Search">
                   <button class="btn btn-outline-success" id="search_btn" type="submit">검색하기</button>
                 </form>
-                <a href="page/login.html" class="btn btn-outline-success" id="login_btn">로그인 하기</a>
+                <a href="/index.html" class="btn btn-outline-success" id="logout_btn"onclick="logout(); return false;">로그아웃 하기</a>
               </div>
             </div>
         </nav>
