@@ -18,7 +18,10 @@
         <script type="text/javascript" src="../js/pop_up.js" defer></script>
         <!-- <script type="text/javascript" defer src="../js/data_type.js"></script> -->
         <script type="text/javascript" defer src="../js/imageHover.js"></script>
-        <script type="text/javascript" defer src="../js/imageHover.js"></script>
+        <script type="module">
+          import { logout } from "../js/session.js";
+          window.logout = logout;
+        </script>
         
 
         <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/4.2.0/crypto-js.min.js" integrity="sha512-a+SUDuwNzXDvz4XrIcXHuCf089/iJAoN4lmrXJg18XnduKK6YlDHNRalv4yd1N40OKI80tFidF+rqTFKGPoWFQ==" crossorigin="anonymous" referrerpolicy="no-referrer" defer></script>
@@ -84,7 +87,7 @@
                   <input class="form-control me-2" id="search_input" name="q" type="search" placeholder="키워드 입력" aria-label="Search">
                   <button class="btn btn-outline-success" id="search_btn" type="submit">검색하기</button>
                 </form>
-                <a href="/index.html" class="btn btn-outline-success" id="logout_btn" onclick="logout(); return false;">로그아웃 하기</a>
+                <a href="/index.html" class="btn btn-outline-success" id="logout_btn"onclick="logout(); return false;">로그아웃 하기</a>
               </div>
             </div>
         </nav>

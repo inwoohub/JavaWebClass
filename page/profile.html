@@ -16,6 +16,10 @@
         <script type="text/javascript" defer src="../js/imageHover.js"></script>
         <script type="text/javascript" src="../js/logout.js" defer></script>
         <script type="text/javascript" src="../js/session.js" defer></script>
+        <script type="module">
+          import { requireLogin } from "../js/session.js";
+          document.addEventListener("DOMContentLoaded", requireLogin);
+        </script>
         <!-- <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=ad527180380e69869d5d41076d582dce" defer></script> -->
         <link rel="stylesheet" href="../css/profile.css">
       </head>
