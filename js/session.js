@@ -159,6 +159,6 @@ export function requireLogin() {
   const loginId = sessionStorage.getItem("Session_Storage_id");
   if (!loginId) {
     alert("로그인이 필요합니다!");
-    window.location.href = "./login.html";
+    window.location.href = "https://inwoohub.github.io/JavaWebClass/";
   }
 }
